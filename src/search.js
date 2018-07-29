@@ -12,7 +12,7 @@ class Search extends Component {
   }
 
   matchBooks = (query) => {
-    //if the query is not '' we first check for any errors with the .error (this error method was learned by watching the 21/7 study jam) 
+    //if the query is not '' we first check for any errors with the .error (this error method was learned by watching the 21/7 study jam)
     //if not we see if results exist and we set the state, else if
     //query=='' then we set the match to [] to have the desired result (no books showing)
 
@@ -60,7 +60,7 @@ class Search extends Component {
       div className = "search-books-results" >
       <ol className = "books-grid" >
       {
-        this.state.match.map(book => ( <li key = {book.id} > < ShowBooks showbook = {book}
+        this.state.match.map(book => ( <li key = {book.id} > < ShowBooks showbook = {book} allBooks={this.props.allBooks}
           changeShelf = {this.props.changeShelf} /> </li > ))
       }
       </ol>

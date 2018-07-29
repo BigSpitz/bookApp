@@ -41,6 +41,7 @@ changeShelf = (book,shelf)=>{BooksAPI.update(book,shelf); this.updateBookState()
       <Route exact path='/search' render={() => (
         < Search
         changeShelf={this.changeShelf}
+        allBooks={this.state.allBooks}
         />
       )}/>
       </div>

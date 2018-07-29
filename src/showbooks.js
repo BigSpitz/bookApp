@@ -8,9 +8,15 @@ class ShowBooks extends Component {
     //fix thumbnail if it does not exist
     if (!this.props.showbook.imageLinks) {var imgUrl=''} else {imgUrl=this.props.showbook.imageLinks.thumbnail}
 
-    //fix changeShelf for search page so the select default value will be 'none'
-    if (this.props.showbook.shelf) {var shelfValue=this.props.showbook.shelf} else {shelfValue='none'}
+    //fix changeShelf for search page so the select value will be 'none' if it is not placed in shelf or
+    //it will have the value of the shelf it is placed
+    if (this.props.showbook.shelf) {var shelfValue=this.props.showbook.shelf} else {
+if ((this.props.allBooks.filter(book=>book.id===this.props.showbook.id)).length>0){
+    this.props.allBooks.filter(book=>book.id===this.props.showbook.id).map(book=>shelfValue =book.shelf);
 
+      }
+      else {shelfValue ='none'}
+}
     return(
       <div className="book">
         <div className="book-top">
@@ -31,6 +37,7 @@ onChange={(e)=>this.props.changeShelf(this.props.showbook, e.target.value)}
         <div className="book-title">{this.props.showbook.title}</div>
         <div className="book-authors">{this.props.showbook.authors}</div>
       </div>
+
     )
 }
 }
